@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form method ='post'>
+            {% csrf_token %}  
+            <label for="name">name</label>
+            <input type="text" id ='name'name="name">
+            <label for="email">email</label>
+            <input type="text" id ='email'name="email">
+            <label for="pwd">PWD</label>
+            <input type="text" id='pwd'name="pwd">
+            <button type="submit">회원정보로 가입하기</button>
+        </form>
+        <button onclick="checkemail()">중복확인</button>
+        <script>
+            function checkemail() {
+                let email = document.querySelector('#email').value;
+                console.log(email);
+                const ajax = fetch(`/searchuserinfo/?email=${email}`);
+                ajax.then(function(result){
+                    return result.json();
+                }).then(function(result2){
+                    alert(result.alert_)
+                })
+            }
+        </script>
+    </body>
+</html>
