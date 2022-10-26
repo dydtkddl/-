@@ -1,0 +1,42 @@
+div>img {
+    position: absolute;
+}
+
+div>p {
+    position: absolute;
+}
+
+div>div>div {
+    position: absolute;
+    top: 30px;
+    width: 400px;
+    height: 397px;
+    left: 447px;
+    opacity: 0.93;
+    background-color: #efe0cc;
+
+}
+
+#name {
+
+    top: 61px;
+}
+
+#date {
+
+    top: 400px;
+}
+
+#pin {
+
+    top: 373px;
+}
+
+#qr {
+    width: 200px;
+    left: 500px;
+}
+
+#back {
+    left: 410px;
+}

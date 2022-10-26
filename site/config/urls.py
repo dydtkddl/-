@@ -21,4 +21,16 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("home/", views.home),
     path("signup/", views.signup),
+    path("", views.home),
+    path("searchuserinfo/", views.searchuserinfo),
+    path("signin/", views.signin),
+    path("signout/", views.signout),
+    path("article/list/", views.list),
+    path("map/", views.map),
+    path("require/", views.require),
+    path("write/", views.write),
+    path("detail/<int:id>/", views.detail),
+    path("delete_article/<int:id>/", views.delete_article),
+    path("modify_article/<int:id>/", views.modify_article),
+
 ]

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}  
+{% block content %} 
+<div>
+    <li>
+        ID : {{article.id}}
+    </li>
+    <li>
+        <input type="text" placeholder=" 제목 : {{article.title}}">
+    </li>
+    <li>
+        내용<div>
+            <textarea  style="border:1px solid;width:500px; height:300px;"placeholder="{{article.content}}">{{article.content}}</textarea>
+        </div>
+    </li>
+    <li>
+        이전 작성 시간 : {{article.time}}
+    </li>
+    <li>
+    {% for i in files %} 
+    <span id ='{{i.o_filename}}'>{{i.o_filename}}</span>
+    <span class="{{i.o_filename}}" onclick="deletefile(event)">[X]</span>
+    {%endfor%}<button onclick="addfile()">파일 추가로올리기</button>
+    <li>
+</div>
+<div>
+    <button >수정완료</button>
+</div>
+<script>
+    function deletefile(e) {
+        let targetclass = event.target.getAttribute('class');
+        console.log(targetclass)
+        let targetstyle = document.getElementById(targetclass).style;
+        console.log(targetstyle.textDecoration);
+        if (targetstyle.textDecoration =='line-through'){
+            targetstyle.textDecoration='dashed';
+        } else {
+            targetstyle.textDecoration='line-through';
+        }
+        console.log(1)
+    }
+</script>
+{% endblock %}

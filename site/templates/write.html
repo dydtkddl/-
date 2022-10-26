@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block content %}
+{% if request.session.email %}  
+<br>
+<form method='post' enctype="multipart/form-data" >
+    {% csrf_token %}  
+    <input type="submit" value="글등록"><br>
+    <label for="title">제목</label>
+    <input id='title'name = 'title' type="text" style="width: 50%;">
+    <br>
+    <label for="text">본문</label>
+    <div style='vertical-align: top;'>
+        <textarea name = 'text' id='text' style="width: 50%; height:300px;"></textarea>
+    </div>
+    <input type="file" name="file" multiple>
+</form>
+{% else %} 
+<br>
+로그인이 필요한 작업입니다
+<a href="/signin/">로그인하러가기</a>
+{% endif %}
+{%endblock%}

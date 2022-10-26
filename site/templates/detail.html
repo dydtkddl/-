@@ -1,0 +1,39 @@
+{% extends 'base.html' %}  
+{% block content %} 
+<div>
+    <li>
+        ID : {{article.id}}
+    </li>
+    <li>
+        제목 : {{article.title}}
+    </li>
+    <li>
+        내용<div style="border:1px solid;width:500px; height:300px;">{{article.content}}</div>
+    </li>
+    <li>
+        작성 시간 : {{article.time}}
+    </li>
+    <li>
+    {% for i in files %} 
+    // {{i.o_filename}}
+    {%endfor%}
+    <li>
+</div>
+<div>
+    <button onclick='delete_article(event)'>삭제</button>
+    <button onclick='modify_article(event)'>수정</button>
+</div>
+<script>
+    function delete_article(e) {
+        console.log({{article.id}});
+        const ajax=fetch(`/delete_article/{{article.id}}`);
+        window.alert('삭제되었다.')
+
+        location='/article/list/'
+    }
+
+    function modify_article(e){
+        location = '/modify_article/{{article.id}}'
+    }
+</script>
+{% endblock %}

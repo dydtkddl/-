@@ -1,0 +1,60 @@
+{% extends 'base.html' %}  
+{% block content %}  
+
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    .time, .id, .writer {
+        width: 200px;
+    }
+    
+</style>
+<table>
+    <tr>
+        <th class="id">글 id</th>
+        <th class ='writer'>작성자</th>
+        <th class="time">날짜</th>
+        <th class="title">제목</th>
+    </tr>
+    {% for i in article_list %}
+    <tr onclick="detail(event)">
+      <td location_ = '{{i.id}}'class="id">{{ i.id }}</td>
+      <td location_ = '{{i.id}}'class ='writer'>{{ i.user.name }}</td>
+      <td location_ = '{{i.id}}'class="time">{{i.time}}</td>
+      <td location_ = '{{i.id}}'class="title">{{i.title}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+<a href='/write/'>글쓰기</a>
+
+<script>
+  window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+}
+  function detail(e) {
+    let target = event.target;
+    a = target.getAttribute('location_')
+    location = `/detail/${a}`
+
+
+    // location = '/detail/'
+  }
+</script>
+{%endblock%}

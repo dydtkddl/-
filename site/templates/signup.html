@@ -1,28 +1,29 @@
-<!DOCTYPE html>
-<html>
-    <body>
+{% extends 'base.html' %} 
+{% block content %}  
+
         <form method ='post'>
             {% csrf_token %}  
             <label for="name">name</label>
             <input type="text" id ='name'name="name">
             <label for="email">email</label>
-            <input type="text" id ='email'name="email">
+            <input oninput="checkemail()"type="text" id ='email'name="email">
             <label for="pwd">PWD</label>
             <input type="text" id='pwd'name="pwd">
             <button type="submit">회원정보로 가입하기</button>
+            <div class="checkemail"></div>
         </form>
-        <button onclick="checkemail()">중복확인</button>
         <script>
             function checkemail() {
                 let email = document.querySelector('#email').value;
                 console.log(email);
                 const ajax = fetch(`/searchuserinfo/?email=${email}`);
                 ajax.then(function(result){
-                    return result.json();
+                    return result.text();
                 }).then(function(result2){
-                    alert(result.alert_)
+                    console.log(result2);
+                    let code=`<input name='checkresult' value='${result2}'>`;
+                    document.querySelector('div.checkemail').innerHTML=code;
                 })
             }
         </script>
-    </body>
-</html>
+{% endblock %}  
